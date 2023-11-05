@@ -12,18 +12,19 @@ class ListaSorView {
         this.keszElem = this.sorElem.children(".pipa");
         this.kukaElem = this.sorElem.children(".kuka");
 
-        if (this.#obj.kesz) {
+        this.keszElem.on('click', () => {
+            this.#esemenyTrigger("kesz");
+            this.#obj.kesz = true;
             this.sorElem.css("background-color", "lightgreen");
             this.keszElem.css("display", "none");
             this.xElem.css("display", "inline");
-        }
-
-        this.keszElem.on('click', () => {
-            this.#esemenyTrigger("kesz");
-            
         })
         this.xElem.on('click', () => {
             this.#esemenyTrigger("megse");
+            this.#obj.kesz = false;
+            this.sorElem.css("background-color", "white");
+            this.keszElem.css("display", "inline");
+            this.xElem.css("display", "none");
         })
         this.kukaElem.on('click', () => {
             this.#esemenyTrigger("torol");

@@ -1,10 +1,15 @@
-import DataService from "../model/DataService.js";
-import UrlapView from "../model/UrlapView.js";
+import UrlapModel from "../model/Urlap.js";
+import UrlapView from "../view/UrlapView.js";
 
-class UrlapController {
 
-    constructor(){
-        this.urlap = new UrlapView($(".urlap"))
+class UrlapController{
+    constructor() {
+        const URLAPMODEL = new UrlapModel();
+        const URLAPVIEW = new UrlapView($('.urlap'), URLAPMODEL.getLeiro());
+        window.addEventListener('esemeny', (event)=> {
+            console.log(event.detail);
+        })
     }
 }
+
 export default UrlapController;
